@@ -23,7 +23,7 @@ export default function MangaScreen() {
       </View>
       <Text>{dataManga?.title.length>30?(dataManga?.title.slice(0,30)+"..."):dataManga?.title}</Text>
       <Text>
-        {dataManga?.views} Views {dataManga?.chapters.length}
+        {dataManga?.views} Views {dataManga?.chapters.length} chapters
       </Text>
     </View>
   );
