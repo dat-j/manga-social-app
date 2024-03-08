@@ -6,6 +6,7 @@ import Ionicons from "react-native-vector-icons/Ionicons";
 import HomeScreen from "./screen/HomeScreen";
 import UserProfile from "./screen/UserProfile";
 import NovelScreen from "./screen/NovelScreen";
+import MangaScreen from "./screen/MangaScreen";
 //screen name
 const home = "Home";
 const userProfile = "User Profile";
@@ -32,17 +33,19 @@ export default function Navigator() {
             }
             return <Ionicons name={iconName} size={size} color={color} />;
           },
+          tabBarStyle:{display:"flex", flexDirection:"column"}
         })}
         tabBarOptions={{
             activeTintColor:"#54BAB9",
             inactiveTintColor:"grey",
             // inactiveBackgroundColor:"grey",
-            labelStyle:{fonsize:10}
+            labelStyle:{fonsize:10},
+            
         }}
       >
         <Tab.Screen name={home} component={HomeScreen} />
         <Tab.Screen name={novel} component={NovelScreen} />
-        <Tab.Screen name={userProfile} component={UserProfile} />
+        <Tab.Screen name={userProfile} component={MangaScreen} />
         
       </Tab.Navigator>
     </NavigationContainer>

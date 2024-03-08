@@ -5,7 +5,7 @@ import MangaList from "../../components/MangaList";
 import AvatarUser from "../../components/AvatarUser";
 import Recomened from "../../components/Recomened";
 import HomeChose from "../../components/HomeChose";
-const background = require("../img/background/bg.jpg");
+
 function HomeScreen() {
   const [search, setSearch] = useState("");
 
