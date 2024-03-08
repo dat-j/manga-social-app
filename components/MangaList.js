@@ -5,10 +5,21 @@ import MangaItem from "./MangaItem";
 
 export default function MangaList() {
   const listChapter = useFetch(0);
-  console.log(listChapter);
   return (
-    <ScrollView alwaysBounceHorizontal={true} horizontal={true}>
-      <View style={{ display: "flex", flexDirection: "row", gap: 10, marginHorizontal:2 }}>
+    <View
+      style={{
+        display: "flex",
+        flexDirection: "row",
+        gap: 10,
+        marginHorizontal: 2,
+        height: "200px",
+      }}
+    >
+      <ScrollView
+        alwaysBounceHorizontal={true}
+        horizontal={true}
+        showsHorizontalScrollIndicator={false}
+      >
         {listChapter.map((item, index) => (
           <MangaItem
             key={index}
@@ -16,9 +27,10 @@ export default function MangaList() {
             title={item.title_manga}
             chapter_new={item.chapter_new}
             rate={item.rate}
+            author={item.author}
           />
         ))}
-      </View>
-    </ScrollView>
+      </ScrollView>
+    </View>
   );
 }

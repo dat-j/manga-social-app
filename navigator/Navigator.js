@@ -5,9 +5,12 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import Ionicons from "react-native-vector-icons/Ionicons";
 import HomeScreen from "./screen/HomeScreen";
 import UserProfile from "./screen/UserProfile";
+import NovelScreen from "./screen/NovelScreen";
 //screen name
 const home = "Home";
 const userProfile = "User Profile";
+const novel = "Novel";
+const search = "Search screen"
 
 const Tab = createBottomTabNavigator();
 export default function Navigator() {
@@ -24,18 +27,23 @@ export default function Navigator() {
             } else if (rn === userProfile) {
               iconName = focused ? "person" : "person-outline";
             }
+            else if (rn === novel) {
+              iconName = focused ? "book" : "book-outline";
+            }
             return <Ionicons name={iconName} size={size} color={color} />;
           },
         })}
         tabBarOptions={{
-            activeTintColor:"tomato",
+            activeTintColor:"#54BAB9",
             inactiveTintColor:"grey",
             // inactiveBackgroundColor:"grey",
             labelStyle:{fonsize:10}
         }}
       >
         <Tab.Screen name={home} component={HomeScreen} />
+        <Tab.Screen name={novel} component={NovelScreen} />
         <Tab.Screen name={userProfile} component={UserProfile} />
+        
       </Tab.Navigator>
     </NavigationContainer>
   );
