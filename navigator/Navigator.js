@@ -7,13 +7,15 @@ import HomeScreen from "./screen/HomeScreen";
 import UserProfile from "./screen/UserProfile";
 import NovelScreen from "./screen/NovelScreen";
 import MangaScreen from "./screen/MangaScreen";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
 //screen name
 const home = "Home";
 const userProfile = "User Profile";
 const novel = "Novel";
-const search = "Search screen"
+const search = "Search screen";
 
 const Tab = createBottomTabNavigator();
+
 export default function Navigator() {
   return (
     <NavigationContainer>
@@ -27,27 +29,25 @@ export default function Navigator() {
               iconName = focused ? "home" : "home-outline";
             } else if (rn === userProfile) {
               iconName = focused ? "person" : "person-outline";
-            }
-            else if (rn === novel) {
+            } else if (rn === novel) {
               iconName = focused ? "book" : "book-outline";
             }
             return <Ionicons name={iconName} size={size} color={color} />;
           },
-          tabBarStyle:{display:"flex", flexDirection:"column"}
+          tabBarStyle: { display: "flex", flexDirection: "column" },
         })}
         tabBarOptions={{
-            activeTintColor:"#54BAB9",
-            inactiveTintColor:"grey",
-            // inactiveBackgroundColor:"grey",
-            labelStyle:{fonsize:10},
-            
+          activeTintColor: "#54BAB9",
+          inactiveTintColor: "grey",
+          // inactiveBackgroundColor:"grey",
+          labelStyle: { fonsize: 10 },
         }}
       >
         <Tab.Screen name={home} component={HomeScreen} />
         <Tab.Screen name={novel} component={NovelScreen} />
         <Tab.Screen name={userProfile} component={MangaScreen} />
-        
       </Tab.Navigator>
+        
     </NavigationContainer>
   );
 }

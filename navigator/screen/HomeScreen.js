@@ -7,12 +7,12 @@ import Recomened from "../../components/Recomened";
 import HomeChose from "../../components/HomeChose";
 
 function HomeScreen() {
+
   const [search, setSearch] = useState("");
 
   const updateSearch = (search) => {
     setSearch(search);
   };
-  
 
   return (
     <View style={{ height: "100%", backgroundColor: "white",  }}>

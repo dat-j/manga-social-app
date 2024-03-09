@@ -1,10 +1,11 @@
-import { View, Text, Image } from "react-native";
+import { View, Text, Image, TouchableOpacity } from "react-native";
 import React from "react";
 import Ionicons from "react-native-vector-icons/Ionicons";
 
-export default function MangaItem({ imgsrc, rate, title, author }) {
+export default function MangaItem({ imgsrc, rate, title, author, navigation }) {
   return (
-    <View
+    <TouchableOpacity onPress={()=>navigation.navigate('MangaScreen')}>
+      <View
       style={{
         backgroundColor: "grey",
         height: "130px",
@@ -39,5 +40,6 @@ export default function MangaItem({ imgsrc, rate, title, author }) {
         {author.length > 15 ? author.slice(0, 15) + "..." : author}
       </Text>
     </View>
+    </TouchableOpacity>
   );
 }
