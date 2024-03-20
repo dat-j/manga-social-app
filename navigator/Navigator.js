@@ -9,11 +9,11 @@ import NovelScreen from "./screen/NovelScreen";
 import MangaScreen from "./screen/MangaScreen";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 //screen name
-const home = "Home";
+const home = "HomeMain";
 const userProfile = "User Profile";
 const novel = "Novel";
 const search = "Search screen";
-
+import {NovelPageNavigator, MangaPageNavigator, UserPageNavigator} from "./customNavigator"
 const Tab = createBottomTabNavigator();
 
 export default function Navigator() {
@@ -43,9 +43,9 @@ export default function Navigator() {
           labelStyle: { fonsize: 10 },
         }}
       >
-        <Tab.Screen name={home} component={HomeScreen} />
-        <Tab.Screen name={novel} component={NovelScreen} />
-        <Tab.Screen name={userProfile} component={MangaScreen} />
+        <Tab.Screen name={home} component={MangaPageNavigator} />
+        <Tab.Screen name={novel} component={NovelPageNavigator} />
+        <Tab.Screen name={userProfile} component={UserPageNavigator} />
       </Tab.Navigator>
         
     </NavigationContainer>

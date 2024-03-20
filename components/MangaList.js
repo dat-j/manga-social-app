@@ -6,7 +6,6 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
 export default function MangaList() {
   const listChapter = useFetch(0);
-  const Stack = createNativeStackNavigator();
   return (
     <View
     className="flex flex-row gap-3 mr-1 h-[200px]"
@@ -25,6 +24,7 @@ export default function MangaList() {
             chapter_new={item.chapter_new}
             rate={item.rate}
             author={item.author}
+            path={item.path_segment_manga}
           />
         ))}
       </ScrollView>

@@ -31,7 +31,7 @@ function NovelScreen() {
   ];
 
   return (
-    <View className="h-full bg-white">
+    <View className="h-full bg-slate-100">
       <AvatarUser />
       <Dropdown
         data={dataDropdown}

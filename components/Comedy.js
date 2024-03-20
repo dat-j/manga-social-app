@@ -15,6 +15,7 @@ export default function Recomened() {
               author={item.author}
               chapter={item.chapter_new}
               title={item.title_manga}
+              path={item.path_segment_manga}
             />
           ))}
         </View>
