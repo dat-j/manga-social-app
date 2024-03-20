@@ -32,124 +32,64 @@ export default function MangaScreen() {
     fetchData();
   }, []);
   return (
-    <View style={{ backgroundColor: "white", height: "100%" }}>
-      <View style={{ height: 298, width: "100%", backgroundColor: "grey" }}>
-        <Image source={{ uri: dataManga?.poster }} style={{ height: "100%" }} />
+    <View className="bg-white h-full">
+      <View className="h-[298px] w-full bg-gray-500">
+        <Image source={{ uri: dataManga?.poster }} className="h-full" />
       </View>
       <View>
-        <View
-          style={{
-            display: "flex",
-            flexDirection: "row",
-            justifyContent: "space-between",
-            alignItems: "center",
-          }}
-        >
-          <Text
-            style={{
-              fontFamily: "Poppins-semibold",
-              color: "#1F1F39",
-              fontSize: 20,
-              marginLeft: 10,
-              marginTop: 10,
-            }}
-          >
+        <View className="flex flex-row justify-between items-center">
+          <Text className="text-[#1F1F39] text-[20px] ml-[10px] mt-[10px]">
             {dataManga?.title.length > 30
               ? dataManga?.title.slice(0, 30) + "..."
               : dataManga?.title}
           </Text>
-          <View
-            style={{
-              display: "flex",
-              flexDirection: "row",
-              alignItems: "center",
-              marginRight: 10,
-              marginTop: 12,
-            }}
-          >
+          <View className="flex flex-row items-center mr-[10px] mt-[12px]">
             <Ionicons name={"star"} size={20} color={"#FF6905"} />
-            <Text
-              style={{
-                fontFamily: "Poppins-semibold",
-                fontSize: 20,
-                color: "#61BFAD",
-              }}
-            >
+            <Text className="text-[20px] text-[#61BFAD]">
               {dataManga?.rate}
             </Text>
           </View>
         </View>
-        <Text
-          style={{
-            fontFamily: "Poppins-regular",
-            fontSize: 12,
-            color: "#858597",
-            marginLeft: 10,
-          }}
-        >
+        <Text className="text-[12px] text-[#858597] ml-[10px]">
           {dataManga?.views} Views {dataManga?.chapters.length} chapters
         </Text>
       </View>
-      <View style={{ paddingVertical: 10 }}>
-        <Text
-          style={{
-            marginLeft: 10,
-            fontFamily: "Poppins-semibold",
-            fontSize: 16,
-          }}
-        >
-          Descriptions
-        </Text>
+      <View className="py-[10px]">
+        <Text className="ml-[10px] text-[16px]">Descriptions</Text>
 
         {hideDes == true && (
           <>
-            <Text
-              style={{
-                fontFamily: "Poppins-regular",
-                fontSize: 12,
-                marginLeft: 10,
-                color:"#9393A3"
-              }}
-            >
+            <Text className="text-xs ml-[10px] text-[#9393A3]">
               {info + "..."}
             </Text>
-            <Ionicons
-              onPress={() => viewDescription()}
-              style={{ marginHorizontal: "auto", marginVertical: 5 }}
-              name={"chevron-down"}
-              color={"black"}
-              size={20}
-            />
+            <View className="flex justify-center items-center">
+              <Ionicons
+                onPress={() => viewDescription()}
+                name={"chevron-down"}
+                color={"black"}
+                size={20}
+              />
+            </View>
           </>
         )}
         {hideDes == false && (
           <>
-            <Text
-              style={{
-                fontFamily: "Poppins-regular",
-                fontSize: 12,
-                marginLeft: 10,
-                color:"#9393A3"
-              }}
-            >
-              {info}
-            </Text>
-            <Ionicons
-              onPress={() => hideDescription()}
-              style={{ marginHorizontal: "auto", marginVertical: 5 }}
-              name={"chevron-up"}
-              color={"black"}
-              size={20}
-            />
+            <Text className="text-xs ml-[10px] text-[#9393A3]">{info}</Text>
+            <View className="flex justify-center items-center">
+              <Ionicons
+                onPress={() => hideDescription()}
+                name={"chevron-up"}
+                color={"black"}
+                size={20}
+              />
+            </View>
           </>
         )}
       </View>
       <ScrollView showsVerticalScrollIndicator={false}>
-      {
-        dataManga?.chapters.map((item,index)=>(
+        {dataManga?.chapters.map((item, index) => (
           <ListChapter key={index} index={index} />
-        ))
-      }
+        ))}
       </ScrollView>
     </View>
   );

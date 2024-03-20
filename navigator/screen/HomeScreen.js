@@ -3,11 +3,9 @@ import { useState } from "react";
 import { SearchBarAndroid } from "@rneui/base/dist/SearchBar/SearchBar-android";
 import MangaList from "../../components/MangaList";
 import AvatarUser from "../../components/AvatarUser";
-import Recomened from "../../components/Recomened";
 import HomeChose from "../../components/HomeChose";
 
 function HomeScreen() {
-
   const [search, setSearch] = useState("");
 
   const updateSearch = (search) => {
@@ -15,48 +13,29 @@ function HomeScreen() {
   };
 
   return (
-    <View style={{ height: "100%", backgroundColor: "white",  }}>
+    <View className="h-full bg-white">
       <AvatarUser />
       <SearchBarAndroid
         placeholder="Find Something..."
         onChangeText={updateSearch}
         value={search}
         inputContainerStyle={{}}
-        containerStyle={{ borderRadius: 20, padding: 0, opacity: "0.8", backgroundColor:"#F4F3FD", marginHorizontal:"10px", height:"48px" }}
+        containerStyle={{
+          borderRadius: 20,
+          padding: 0,
+          opacity:0.8,
+          backgroundColor: "#F4F3FD",
+          marginHorizontal: 10,
+          height: "48px",
+        }}
         placeholderTextColor={"#B8B8D2"}
       />
-      <View
-        style={{
-          display: "flex",
-          flexDirection: "row",
-          justifyContent: "space-between",
-          alignItems:"center"
-        }}
-      >
-        <Text
-          style={{
-            fontSize: "14px",
-            paddingVertical: "10px",
-            color: "#333333",
-            fontFamily:"Poppins-semibold",
-            marginLeft:"10px"
-          }}
-        >
-          Trending Manga
-        </Text>
-        <Text
-          style={{
-            fontSize: "24px",
-            paddingVertical: "10px",
-            color: "#858597",
-            fontFamily:"Poppins-semibold"
-          }}
-        >
-          ...
-        </Text>
+      <View className="flex flex-row justify-between items-center">
+        <Text className="text-sm py-3 ml-3 text-[#333333]">Trending Manga</Text>
+        <Text className="text-2xl py-3 text-[#858597]">...</Text>
       </View>
-      <MangaList  />
-      <HomeChose/>
+      <MangaList />
+      <HomeChose />
     </View>
   );
 }

@@ -10,16 +10,16 @@ export default function AvatarUser() {
         "Poppins-semibold": require("../assets/fonts/Poppins-SemiBold.ttf"),
       });
   return (
-    <View style={{ display: "flex", flexDirection:"row", alignItems:"center", gap:"10px", padding:"10px" }}>
-      <View style={{ height: "58px", width: "58px" }}>
+    <View className="flex flex-row items-center gap-3 p-3" >
+      <View className="h-14 w-14 bg-red-400" >
         <Image
-          style={{ height: "100%", width: "100%" }}
+          className="h-full w-full"
           source={avatar}
         ></Image>
       </View>
       <View >
-      <Text style={{fontFamily:"Poppins-regular", fontSize:"14px", color:"#858597"}}>Goodmorning,</Text>
-      <Text style={{fontFamily:"Poppins-semibold",fontSize:"22px", color:"#1F1F39"}}>Tran Dat</Text>
+      <Text className="text-sm text-[#858597]" >Goodmorning,</Text>
+      <Text className="text-2xl text-[#1F1F39]" >Tran Dat</Text>
       </View>
     </View>
   );

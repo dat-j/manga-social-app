@@ -5,35 +5,26 @@ import Ionicons from "react-native-vector-icons/Ionicons";
 export default function ListChapter({index}) {
   return (
     <View
-      style={{ display: "flex", flexDirection: "row", alignItems: "center", justifyContent:"space-between" , paddingHorizontal:10, marginVertical:10}}
-    >
-      <View style={{display:"flex", flexDirection:"row", gap:20}}>
+    className="flex flex-row items-center justify-between px-[10px] my-[10px] "
+       >
+      <View className="flex flex-row gap-5">
         <Text
-          style={{
-            fontFamily: "Poppins-regular",
-            fontSize: 24,
-            color: "#B8B8D2"
-          }}
+        className="text-2xl text-[#B8B8D2]"
+         
         >
           {index<9?("0"+(index+1)):(index+1)}
           
         </Text>
         <View>
           <Text
-            style={{
-              fontFamily: "Poppins-regular",
-              fontSize: 14,
-              color: "black",
-            }}
+          className="text-sm text-black"
+           
           >
             {"Chapter " +(index+1)}
           </Text>
           <Text
-            style={{
-              fontFamily: "Poppins-regular",
-              fontSize: 12,
-              color: "#B8B8D2",
-            }}
+          className="text-[12px] text-[#B8B8D2]"
+            
           >
             30 pages
           </Text>

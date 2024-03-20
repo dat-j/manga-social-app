@@ -31,7 +31,7 @@ function NovelScreen() {
   ];
 
   return (
-    <View style={{ height: "100%", backgroundColor: "white" }}>
+    <View className="h-full bg-white">
       <AvatarUser />
       <Dropdown
         data={dataDropdown}

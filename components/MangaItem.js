@@ -4,42 +4,17 @@ import Ionicons from "react-native-vector-icons/Ionicons";
 
 export default function MangaItem({ imgsrc, rate, title, author, navigation }) {
   return (
-    <TouchableOpacity onPress={()=>navigation.navigate('MangaScreen')}>
-      <View
-      style={{
-        backgroundColor: "grey",
-        height: "130px",
-        width: "115px",
-        borderRadius: "8px",
-        marginLeft: "10px",
-      }}
-    >
-      <Image
-        source={{ uri: imgsrc }}
-        style={{ height: "100%", width: "100%", borderRadius: "8px" }}
-      />
+    <TouchableOpacity onPress={() => navigation.navigate("MangaScreen")}>
+      <View className="bg-gray-500 h-[130px] w-[115px] rounded-lg ml-3">
+        <Image source={{ uri: imgsrc }} className="h-full w-full rounded-lg" />
 
-      <Text
-        style={{
-          paddingTop: 10,
-          paddingBottom: 5,
-          fontFamily: "Poppins-semibold",
-          fontSize: "14px",
-          color: "#333333",
-        }}
-      >
-        {title.length > 20 ? title.slice(0, 20) + "..." : title}
-      </Text>
-      <Text
-        style={{
-          fontFamily: "Poppins-regular",
-          fontSize: "10px",
-          color: "#939393",
-        }}
-      >
-        {author.length > 15 ? author.slice(0, 15) + "..." : author}
-      </Text>
-    </View>
+        <Text className="pt-3 pb-1 text-sm text-[#333333]">
+          {title.length > 20 ? title.slice(0, 20) + "..." : title}
+        </Text>
+        <Text className="text-xs text-[#939393]">
+          {author.length > 15 ? author.slice(0, 15) + "..." : author}
+        </Text>
+      </View>
     </TouchableOpacity>
   );
 }

@@ -6,7 +6,7 @@ import MangaCard from "./MangaCard";
 export default function Recomened() {
   const listManga = useFetch(4);
   return (
-      <ScrollView showsVerticalScrollIndicator={false} style={{marginTop:20}}>
+      <ScrollView showsVerticalScrollIndicator={false} className="mt-5">
         <View>
           {listManga.slice(0, 20).map((item, index) => (
             <MangaCard

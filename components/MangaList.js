@@ -9,13 +9,7 @@ export default function MangaList() {
   const Stack = createNativeStackNavigator();
   return (
     <View
-      style={{
-        display: "flex",
-        flexDirection: "row",
-        gap: 10,
-        marginHorizontal: 2,
-        height: "200px",
-      }}
+    className="flex flex-row gap-3 mr-1 h-[200px]"
     >
       <ScrollView
         alwaysBounceHorizontal={true}
