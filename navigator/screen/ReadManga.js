@@ -1,31 +1,34 @@
 import { View, Text, ScrollView, Image, SafeAreaView } from "react-native";
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-
+const arr = ["a", "b", "c"];
 export default function ReadManga({ route }) {
-  const [chapterData, setChapterData] = useState();
-  const [imgChapter,setImgChapter] = useState("");
-  const fetchData =  () => {
+  const [chapterData, setChapterData] = useState("");
+  const fetchData = async () => {
     try {
-      const res =  axios.get("" + route.params.chapterLink);
+      const res = await axios.get("" + route.params.chapterLink);
       setChapterData(res.data);
-      setImgChapter(res.data.image_chapter)
     } catch (error) {
       console.log(error);
     }
   };
-  console.log(imgChapter);
-  
+
   useEffect(() => {
     fetchData();
-    
+    console.log(chapterData);
   }, []);
   return (
-    <View>
-    { imgChapter && ( imgChapter?.map((item,index)=>{
-            <Text key={index} className="text-black text-2xl">{item}</Text>
-        }))}
-       
-    </View>
+    <ScrollView>
+      {chapterData?.image_chapter?.slice(0,20).map((item, index) => (
+        <View className="flex justify-center items-center w-full h-screen m-0 p-0">
+          <Image
+            className="w-full h-full "
+            src={item}
+            key={index}
+            resizeMode="contain"
+          />
+        </View>
+      ))}
+    </ScrollView>
   );
 }
