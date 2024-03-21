@@ -3,7 +3,7 @@ import React from "react";
 import Ionicons from "react-native-vector-icons/Ionicons";
 import { useNavigation } from "@react-navigation/native";
 
-export default function ListChapter({ index,chapterLink }) {
+export default function ListChapter({ index,chapterLink, chapters }) {
   const navigation = useNavigation();
   return (
     <View className="flex flex-row items-center justify-between px-[10px] my-[10px] ">

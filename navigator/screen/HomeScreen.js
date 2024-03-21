@@ -4,6 +4,7 @@ import { SearchBarAndroid } from "@rneui/base/dist/SearchBar/SearchBar-android";
 import MangaList from "../../components/MangaList";
 import AvatarUser from "../../components/AvatarUser";
 import HomeChose from "../../components/HomeChose";
+import { useSafeAreaInsets } from "react-native-safe-area-context";
 
 function HomeScreen() {
   const [search, setSearch] = useState("");
@@ -12,8 +13,17 @@ function HomeScreen() {
     setSearch(search);
   };
 
+  const insets = useSafeAreaInsets();
   return (
-    <View className="h-full bg-white">
+    <View
+      className="h-full bg-white"
+      style={{
+        paddingTop: insets.top,
+        paddingBottom: insets.bottom,
+        paddingLeft: insets.left,
+        paddingRight: insets.right,
+      }}
+    >
       <AvatarUser />
       <SearchBarAndroid
         placeholder="Find Something..."
@@ -23,7 +33,7 @@ function HomeScreen() {
         containerStyle={{
           borderRadius: 20,
           padding: 0,
-          opacity:0.8,
+          opacity: 0.8,
           backgroundColor: "#F4F3FD",
           marginHorizontal: 10,
           height: "48px",

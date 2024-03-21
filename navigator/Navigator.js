@@ -35,6 +35,7 @@ export default function Navigator() {
             return <Ionicons name={iconName} size={size} color={color} />;
           },
           tabBarStyle: { display: "flex", flexDirection: "column" },
+          headerShown:false
         })}
         tabBarOptions={{
           activeTintColor: "#54BAB9",

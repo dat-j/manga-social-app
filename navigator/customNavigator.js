@@ -22,7 +22,7 @@ export {MangaPageNavigator}
 
 const NovelPageNavigator = () => {
     return (
-      <Stack.Navigator>
+      <Stack.Navigator screenOptions={{headerShown:false}}>
         <Stack.Screen name="NovelScreen" component={NovelScreen}/>
         
       </Stack.Navigator>
@@ -34,7 +34,7 @@ const NovelPageNavigator = () => {
 
   const UserPageNavigator = () => {
     return (
-      <Stack.Navigator>
+      <Stack.Navigator screenOptions={{headerShown:false}}>
           <Stack.Screen name='UserSetting' component={UserProfile}/>
       </Stack.Navigator>
     )

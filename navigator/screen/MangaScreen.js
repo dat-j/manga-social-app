@@ -3,11 +3,13 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Ionicons from "react-native-vector-icons/Ionicons";
 import ListChapter from "../../components/ListChapter";
+import { useSafeAreaInsets } from "react-native-safe-area-context";
 
-const MangaScreen = ({route}) => {
+const MangaScreen = ({ route }) => {
   const [dataManga, setDataManga] = useState();
   const [info, setInfo] = useState();
   const [hideDes, setHideDes] = useState(true);
+  const insets = useSafeAreaInsets();
   const viewDescription = () => {
     setInfo(dataManga.description);
     setHideDes(!hideDes);
@@ -18,7 +20,9 @@ const MangaScreen = ({route}) => {
   };
 
   const fetchData = async () => {
-    const res = await axios.get("https://hanico.online/rmanga/"+route.params.path);
+    const res = await axios.get(
+      "https://hanico.online/rmanga/" + route.params.path
+    );
     try {
       setDataManga(res.data[0]);
       setInfo(res.data[0].description.slice(0, 250));
@@ -31,7 +35,15 @@ const MangaScreen = ({route}) => {
     fetchData();
   }, []);
   return (
-    <View className="bg-white h-full">
+    <View
+      className="bg-white h-full"
+      style={{
+        paddingTop: insets.top,
+        paddingBottom: insets.bottom,
+        paddingLeft: insets.left,
+        paddingRight: insets.right,
+      }}
+    >
       <View className="h-[298px] w-full bg-gray-500">
         <Image source={{ uri: dataManga?.poster }} className="h-full" />
       </View>
@@ -43,7 +55,6 @@ const MangaScreen = ({route}) => {
               : dataManga?.title}
           </Text>
           <View className="flex flex-row items-center mr-[10px] mt-[12px]">
-            
             <Text className="text-[20px] text-[#61BFAD] px-1">
               {dataManga?.rate}
             </Text>
@@ -88,10 +99,15 @@ const MangaScreen = ({route}) => {
       </View>
       <ScrollView showsVerticalScrollIndicator={false}>
         {dataManga?.chapters.map((item, index) => (
-          <ListChapter key={index} index={index} chapterLink={item} />
+          <ListChapter
+            key={index}
+            index={index}
+            chapterLink={item}
+            chapters={dataManga?.chapters}
+          />
         ))}
       </ScrollView>
     </View>
   );
-}
-export default MangaScreen
+};
+export default MangaScreen;

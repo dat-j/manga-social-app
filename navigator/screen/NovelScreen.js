@@ -10,9 +10,11 @@ import { useEffect, useState } from "react";
 import AvatarUser from "../../components/AvatarUser";
 import { Dropdown } from "react-native-element-dropdown";
 import NovelList from "./../../components/NovelList";
+import { useSafeAreaInsets } from "react-native-safe-area-context";
 function NovelScreen() {
   const [search, setSearch] = useState("");
   const [chosedItem, setChosedItem] = useState(1);
+  const insets = useSafeAreaInsets();
 
   const updateSearch = (search) => {
     setSearch(search);
@@ -31,7 +33,15 @@ function NovelScreen() {
   ];
 
   return (
-    <View className="h-full bg-slate-100">
+    <View
+      className="h-full bg-slate-100"
+      style={{
+        paddingTop: insets.top,
+        paddingBottom: insets.bottom,
+        paddingLeft: insets.left,
+        paddingRight: insets.right,
+      }}
+    >
       <AvatarUser />
       <Dropdown
         data={dataDropdown}
@@ -46,14 +56,14 @@ function NovelScreen() {
           marginHorizontal: 20,
           fontFamily: "Poppins-regular",
           fontSize: 14,
-          marginRight:5
+          marginRight: 5,
         }}
         selectedTextStyle={{
           color: "#858597",
           marginHorizontal: 20,
           fontFamily: "Poppins-regular",
           fontSize: 14,
-          marginRight:5
+          marginRight: 5,
         }}
         style={{
           marginHorizontal: 10,
