@@ -1,19 +1,27 @@
 import { View, Text, Button, StyleSheet, ImageBackground } from "react-native";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { SearchBarAndroid } from "@rneui/base/dist/SearchBar/SearchBar-android";
 import MangaList from "../../components/MangaList";
 import AvatarUser from "../../components/AvatarUser";
 import HomeChose from "../../components/HomeChose";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 function HomeScreen() {
   const [search, setSearch] = useState("");
+  
 
   const updateSearch = (search) => {
     setSearch(search);
   };
+  
+  const check = () =>{
+    console.log(AsyncStorage.getItem('id_user'))
+  }
 
   const insets = useSafeAreaInsets();
+
+ 
   return (
     <View
       className="h-full bg-white"
@@ -25,6 +33,7 @@ function HomeScreen() {
       }}
     >
       <AvatarUser />
+      <Button title="test" onPress={()=>check()} ></Button>
       <SearchBarAndroid
         placeholder="Find Something..."
         onChangeText={updateSearch}
