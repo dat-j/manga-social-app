@@ -8,7 +8,7 @@ const avatar = require("../navigator/img/user.jpg");
 export default function AvatarUser() {
   const [idUser, setIdUser] = useState();
   const [userData, setUserData] = useState();
-
+  
   const getUserData = async () => {
     try {
       const id_user = await AsyncStorage.getItem("id_user");
@@ -16,6 +16,7 @@ export default function AvatarUser() {
         setIdUser(id_user);
       }
     } catch (err) {
+      setIdUser(null)
       console.log(err);
     }
   };
@@ -34,7 +35,7 @@ export default function AvatarUser() {
   useEffect(() => {
     getUserData();
     fetchUserData();
-  }, []);
+  }, [idUser]);
   return (
     <View className="flex flex-row items-center gap-3 p-3">
       <View className="h-14 w-14 bg-red-400 rounded-full">

@@ -14,10 +14,7 @@ function HomeScreen() {
   const updateSearch = (search) => {
     setSearch(search);
   };
-  
-  const check = () =>{
-    console.log(AsyncStorage.getItem('id_user'))
-  }
+
 
   const insets = useSafeAreaInsets();
 
@@ -33,7 +30,6 @@ function HomeScreen() {
       }}
     >
       <AvatarUser />
-      <Button title="test" onPress={()=>check()} ></Button>
       <SearchBarAndroid
         placeholder="Find Something..."
         onChangeText={updateSearch}

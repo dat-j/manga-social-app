@@ -54,14 +54,12 @@ function NovelScreen() {
         placeholderStyle={{
           color: "#858597",
           marginHorizontal: 20,
-          fontFamily: "Poppins-regular",
           fontSize: 14,
           marginRight: 5,
         }}
         selectedTextStyle={{
           color: "#858597",
           marginHorizontal: 20,
-          fontFamily: "Poppins-regular",
           fontSize: 14,
           marginRight: 5,
         }}
@@ -72,7 +70,6 @@ function NovelScreen() {
           height: 48,
           opacity: 0.8,
           padding: 0,
-          fontFamily: "Poppins-regular",
         }}
       />
       <NovelList index={chosedItem} key={chosedItem} />

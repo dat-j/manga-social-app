@@ -17,6 +17,7 @@ import {NovelPageNavigator, MangaPageNavigator, UserPageNavigator} from "./custo
 const Tab = createBottomTabNavigator();
 
 export default function Navigator() {
+  
   return (
     <NavigationContainer>
       <Tab.Navigator
