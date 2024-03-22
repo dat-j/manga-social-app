@@ -4,6 +4,7 @@ import axios from "axios";
 import React, { useState } from "react";
 
 import {
+  Button,
   Image,
   ScrollView,
   Text,
@@ -16,6 +17,7 @@ import { useSafeAreaInsets } from "react-native-safe-area-context";
 const UserProfile = () => {
   const insets = useSafeAreaInsets();
   const [login, setLogin] = useState(true);
+  const [logined, setLogined] = useState(false);
   const [email,setEmail] = useState();
   const [password,setPassword] = useState();
   const navigation = useNavigation();
@@ -63,12 +65,13 @@ const UserProfile = () => {
         
       } else {
         
-        console.log("success!");
+        console.log("login success!");
+        setLogined(true);
         console.log(response.data.account.email);
         console.log(response.data.account.id_user);
         AsyncStorage.setItem("email",response.data.account.email);
         AsyncStorage.setItem("id_user",(response.data.account.id_user).toString());
-        navigation.navigate("User")
+        
       }
     } catch (error) {
       console.log(error);
@@ -77,6 +80,13 @@ const UserProfile = () => {
   const handleSubmit = async () => {
     await loginSubmit();
   };
+
+  const logout = () =>{
+    AsyncStorage.removeItem("email");
+    AsyncStorage.removeItem("id_user");
+    setLogined(false);
+    console.log(AsyncStorage.getItem("email"))
+  }
   return (
     <View
       style={{
@@ -87,7 +97,9 @@ const UserProfile = () => {
       }}
       className="flex items-center justify-center my-auto bg-white h-full "
     >
-      <View className="h-[524px] w-[315px] shadow-2xl shadow-black rounded-[34px] flex flex-col items-center bg-white">
+      {
+        !logined?(
+          <View className="h-[524px] w-[315px] shadow-2xl shadow-black rounded-[34px] flex flex-col items-center bg-white">
         {login?(
           <View className="h-7 w-56 rounded-[14px] bg-white shadow-2xl shadow-black flex flex-row mt-14 ">
           <TouchableOpacity className="w-1/2" onPress={()=>changeTab()}>
@@ -198,6 +210,15 @@ const UserProfile = () => {
           </View>
         </View>
       </View>
+        ):(
+          <View>
+            <Text>
+              Logined
+            </Text>
+            <Button onPress={logout} title="Logout"></Button>
+          </View>
+        )
+      }
     </View>
   );
 };
